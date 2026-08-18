@@ -22,11 +22,16 @@ public class Main {
 
         blockchain.addBlock(block2);
 
-        for (Block block : blockchain.chain) {
-            System.out.println("Data: " + block.data);
-            System.out.println("Previous Hash: " + block.previousHash);
-            System.out.println("Hash: " + block.hash);
-            System.out.println();
-        }
+        System.out.println();
+        System.out.println("Blockchain valid: "
+                + blockchain.isChainValid());
+
+        System.out.println();
+        System.out.println("Tampering with Block 1...");
+
+        blockchain.chain.get(1).data = "Alice -> Bob : 1000";
+
+        System.out.println("Blockchain valid after tampering: "
+                + blockchain.isChainValid());
     }
 }

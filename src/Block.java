@@ -43,4 +43,17 @@ public class Block {
             throw new RuntimeException(e);
         }
     }
+    public void mineBlock(int difficulty) {
+
+    String target = "0".repeat(difficulty);
+
+    while (!hash.substring(0, difficulty).equals(target)) {
+
+        nonce++;
+
+        hash = calculateHash();
+    }
+
+    System.out.println("Block mined: " + hash);
+}
 }
